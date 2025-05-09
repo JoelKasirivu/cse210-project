@@ -38,7 +38,7 @@ class Program
                 }
                 else if (useGuess > magicNumber)
                 {
-                    Console.WriteLine("Too high! Try again.");
+                    //Console.WriteLine("Too high! Try again.");
                 }
 
                 // Ask if the user wants to play again
@@ -54,3 +54,4 @@ class Program
 
     }
 }
+
