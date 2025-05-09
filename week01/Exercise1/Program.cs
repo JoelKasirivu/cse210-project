@@ -15,6 +15,9 @@ class Program
         
 
         Console.WriteLine($"Your name is:{last}, {first} {last}");
+        Console.WriteLine("What is your favourite color: ");
+        string color = Console.ReadLine();
+        Console.WriteLine($"Your favourite color is: {color}");
 
 
 
