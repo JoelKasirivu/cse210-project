@@ -58,9 +58,16 @@ class Program
         Console.WriteLine($"Your letter grade is: {letter}{sign}");
 
         // congratulate the student
-        
 
-    
+        if (gradePercentage >= 70)
+        {
+            Console.WriteLine("Congratulations! You passed the course.");
+        }
+        else
+        {
+            Console.WriteLine("Unfortunately, you did not pass the course. Better luck next time!");
+        }
+
     }
 }
         
