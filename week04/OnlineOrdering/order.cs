@@ -1,9 +1,12 @@
 class Order
+// Represents an order containing multiple products and customer information
 {
+    // This class represents an order in an online ordering system.
     private List<Product> products;
     private Customer customer;
     private const double ShippingFeeUSA = 5.0;
     private const double ShippingFeeInternational = 35.0;
+    // It includes a list of products, customer information, and shipping fees based on the customer's location.
 
     public Order(Customer customer)
     {
@@ -15,6 +18,8 @@ class Order
     {
         products.Add(product);
     }
+    // Adds a product to the order. The product is added to the products list.
+    // The method takes a Product object as a parameter and adds it to the products list.
 
     public double GetTotalCost()
     {
@@ -27,7 +32,7 @@ class Order
         totalCost += customer.LivesInUSA() ? ShippingFeeUSA : ShippingFeeInternational;
         return totalCost;
     }
-
+// Calculates the total cost of the order, including the cost of all products and shipping fees.
     public string GetPackingLabel()
     {
         string label = "Packing Label:\n";
@@ -37,7 +42,7 @@ class Order
         }
         return label;
     }
-
+// Generates a packing label for the order, listing all products with their details.
     public string GetShippingLabel()
     {
         return "Shipping Label:\n" + customer.GetShippingLabel();

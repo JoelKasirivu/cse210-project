@@ -1,6 +1,7 @@
 using System;
 
 class Program
+// This program simulates a YouTube video platform where users can watch videos and leave comments.
 {
     static void Main(string[] args)
     {
