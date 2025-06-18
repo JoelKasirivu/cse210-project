@@ -1,9 +1,12 @@
 class Program
 {
     static List<Goal> goals = new List<Goal>();
+    // List to hold all goals
+    // Each goal can be a SimpleGoal, EternalGoal, or ChecklistGoal
     static int totalScore = 0;
 
     static void Main()
+    // Main method to run the Eternal Quest game
     {
         while (true)
         {
@@ -25,6 +28,7 @@ class Program
     }
 
     static void CreateGoal()
+    // Method to create a new goal
     {
         Console.WriteLine("Choose goal type: (1) Simple (2) Eternal (3) Checklist");
         string type = Console.ReadLine();
@@ -34,6 +38,7 @@ class Program
         int points = int.Parse(Console.ReadLine());
 
         switch (type)
+        // Switch case to handle different goal types
         {
             case "1": goals.Add(new SimpleGoal(name, points)); break;
             case "2": goals.Add(new EternalGoal(name, points)); break;
@@ -49,6 +54,7 @@ class Program
     }
 
     static void RecordProgress()
+    // Method to record progress on a goal
     {
         ShowGoals();
         Console.Write("Enter goal number to record progress: ");
@@ -65,6 +71,8 @@ class Program
     }
 
     static void ShowGoals()
+    // Method to display all current goals
+    // and their statuses
     {
         Console.WriteLine("\nCurrent Goals:");
         for (int i = 0; i < goals.Count; i++)
@@ -75,6 +83,7 @@ class Program
     }
 
     static void SaveGoals()
+    // Method to save goals and total score to a file
     {
         using (StreamWriter writer = new StreamWriter("goals.txt"))
         {
