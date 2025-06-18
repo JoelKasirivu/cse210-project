@@ -1,37 +1,31 @@
 class ChecklistGoal : Goal
 {
-    private int _amountCompleted;
-    private int _target;
-    private int _bonus;
-    // Represents a goal that requires completing a checklist of tasks
-// This class extends the Goal class and adds functionality for tracking multiple completions
+    private int targetCount;
+    private int currentCount;
+    private int bonusPoints;
 
-    public ChecklistGoal(string name, string description, int points, int target, int bonus)
-        : base(name, description, points)
-        // Constructor to initialize the checklist goal with a name, description, points, target, and bonus
+    public ChecklistGoal(string name, int points, int targetCount, int bonusPoints) 
+        : base(name, points)
     {
-        _amountCompleted = 0;
-        _target = target;
-        _bonus = bonus;
+        this.targetCount = targetCount;
+        this.bonusPoints = bonusPoints;
+        this.currentCount = 0;
     }
 
-    public override void RecordEvent()
-    // Method to record an event for the checklist goal
-    // This method increments the amount completed and checks if the target is reached
+    public override void RecordProgress()
     {
-        _amountCompleted++;
-        Console.WriteLine($"Progress: {_amountCompleted}/{_target} for '{_shortName}'");
-
-        if (_amountCompleted >= _target)
+        currentCount++;
+        Console.WriteLine($"Recorded '{name}' ({currentCount}/{targetCount}). You earned {points} points.");
+        if (currentCount == targetCount)
         {
-            Console.WriteLine($"Checklist Goal '{_shortName}' completed! Bonus: {_bonus} pts");
+            isCompleted = true;
+            Console.WriteLine($"Congratulations! You completed '{name}' and earned a bonus of {bonusPoints} points.");
         }
-
     }
 
-    public override string GetDetailsString()
-    // Method to get a string representation of the checklist goal's details
+    public override void DisplayStatus()
     {
-        return $"{_shortName}: {_description} ({_points} pts, {_amountCompleted}/{_target} completed)";
+        Console.WriteLine($"Goal: {name} | Progress: {currentCount}/{targetCount} | Completed: {(isCompleted ? "[X]" : "[ ]")}");
     }
 }
+
