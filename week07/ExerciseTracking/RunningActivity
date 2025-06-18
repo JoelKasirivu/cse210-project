@@ -1,0 +1,15 @@
+// Derived Class: RunningActivity
+class RunningActivity : Activity
+{
+    private double runDistance; // Distance in miles
+
+    public RunningActivity(DateTime date, int duration, double distance) : base(date, duration)
+    {
+        runDistance = distance;
+    }
+
+    // Override methods for specific calculations
+    public override double GetDistance() => runDistance;
+    public override double GetSpeed() => (runDistance / GetDuration()) * 60;
+    public override double GetPace() => GetDuration() / runDistance;
+}
